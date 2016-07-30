@@ -1,4 +1,4 @@
-package com.alexaguilar.miscontactos;
+package com.alexaguilar.miscontactos.pojo;
 
 /**
  * Created by Alex on 17/07/16.
