@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -55,6 +56,7 @@ public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.Co
         contactoViewHolderholder.imgFoto.setImageResource(contacto.getFoto());
         contactoViewHolderholder.tvNombreCV.setText(contacto.getNombre());
         contactoViewHolderholder.tvTelenoCV.setText(contacto.getTelefono());
+        contactoViewHolderholder.tvLikes.setText(String.valueOf(contacto.getLikes()) + " Likes");
 
         // On click
         /* */
@@ -75,6 +77,13 @@ public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.Co
         });
 
 
+        contactoViewHolderholder.btnLike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(activity,"Diste like a "+contacto.getNombre(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
 
@@ -92,6 +101,8 @@ public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.Co
         private ImageView imgFoto;
         private TextView tvNombreCV;
         private TextView tvTelenoCV;
+        private ImageButton btnLike;
+        private TextView tvLikes;
 
         public ContactoViewHolder(View itemView) {
             super(itemView);
@@ -99,6 +110,8 @@ public class ContactoAdaptador extends RecyclerView.Adapter<ContactoAdaptador.Co
             imgFoto = (ImageView) itemView.findViewById(R.id.imgFoto);
             tvNombreCV = (TextView) itemView.findViewById(R.id.tvNombreCV);
             tvTelenoCV = (TextView) itemView.findViewById(R.id.tvTelefonoCV);
+            btnLike = (ImageButton) itemView.findViewById(R.id.btnLike);
+            tvLikes = (TextView) itemView.findViewById(R.id.tvLikes);
 
         }
     }

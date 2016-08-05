@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         viewPager = (ViewPager) findViewById(R.id.viewPager);
 
-        Toast.makeText(this,"Antes",Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this,"Antes",Toast.LENGTH_SHORT).show();
 
         //setSupportActionBar(miActionBar);
 
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<Fragment> fragments = new ArrayList<>();
         //ArrayList fragments = new ArrayList<>();
 
-        Toast.makeText(this,"Aqui",Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this,"Aqui",Toast.LENGTH_SHORT).show();
 
         fragments.add(new RecyclerViewFragment());
         fragments.add(new PerfilFragment());
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void setUpViewPager(){
-        Toast.makeText(this,"Alla",Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this,"Alla",Toast.LENGTH_SHORT).show();
         viewPager.setAdapter(new PageAdapter(getSupportFragmentManager(), agregarFragments()));
         tabLayout.setupWithViewPager(viewPager);
 
