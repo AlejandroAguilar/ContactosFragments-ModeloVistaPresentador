@@ -26,6 +26,10 @@ public class BaseDatos extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
 
+
+
+
+/* */
         String queryCrearTablaContacto = "CREATE TABLE " + ConstanteBaseDatos.TABLE_CONTACTS + "("+
                                         ConstanteBaseDatos.TABLE_CONTACTS_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                                         ConstanteBaseDatos.TABLE_CONTACTS_NOMBRE + " TEXT, "+
@@ -42,9 +46,29 @@ public class BaseDatos extends SQLiteOpenHelper{
                                         "REFERENCES "+ ConstanteBaseDatos.TABLE_CONTACTS + "("+ ConstanteBaseDatos.TABLE_CONTACTS_ID +")"+
                                         ")";
 
+        db.execSQL(queryCrearTablaContacto);
+        db.execSQL(queryCrearTablaLikesContacto);
+
+
+        /*
+        String queryCrearTablaContacto = "CREATE TABLE " + ConstanteBaseDatos.TABLE_CONTACTS + "(" +
+                ConstanteBaseDatos.TABLE_CONTACTS_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                ConstanteBaseDatos.TABLE_CONTACTS_NOMBRE + " TEXT, " +
+                ConstanteBaseDatos.TABLE_CONTACTS_TELEFONO + " TEXT, " +
+                ConstanteBaseDatos.TABLE_CONTACTS_EMAIL + " TEXT, " +
+                ConstanteBaseDatos.TABLE_CONTACTS_FOTO + " INTEGER" +
+                ")";
+        String queryCrearTablaLikesContacto = "CREATE TABLE " + ConstanteBaseDatos.TABLE_LIKES_CONTACT + "(" +
+                ConstanteBaseDatos.TABLE_LIKES_CONTACT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                ConstanteBaseDatos.TABLE_LIKES_CONTACT_ID_CONTACTO + " INTEGER, " +
+                ConstanteBaseDatos.TABLE_LIKES_CONTACT_NUMERO_LIKES + " INTEGER, " +
+                "FOREIGN KEY (" + ConstanteBaseDatos.TABLE_LIKES_CONTACT_ID_CONTACTO + ") " +
+                "REFERENCES " + ConstanteBaseDatos.TABLE_CONTACTS + "(" + ConstanteBaseDatos.TABLE_CONTACTS_ID + ")" +
+                ")";
 
         db.execSQL(queryCrearTablaContacto);
         db.execSQL(queryCrearTablaLikesContacto);
+*/
 
     }
 
@@ -85,5 +109,47 @@ public class BaseDatos extends SQLiteOpenHelper{
         db.insert(ConstanteBaseDatos.TABLE_CONTACTS,null, contentValues);
         db.close();
     }
+
+    public void insertarLikeContacto(ContentValues contentValues){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.insert(ConstanteBaseDatos.TABLE_LIKES_CONTACT, null, contentValues);
+        db.close();
+    }
+
+    public int obtenerLikesContacto(Contacto contacto){
+        int likes = 0;
+
+        String query = "SELECT COUNT ("+ ConstanteBaseDatos.TABLE_LIKES_CONTACT_NUMERO_LIKES +")" +
+                " FROM " + ConstanteBaseDatos.TABLE_LIKES_CONTACT +
+                " WHERE " + ConstanteBaseDatos.TABLE_LIKES_CONTACT_ID_CONTACTO + " = " +
+                contacto.getId();
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor registros = db.rawQuery(query, null);
+
+        if ( registros.moveToNext() ){
+            // indice de la columna del resultado del query
+          likes = registros.getInt(0);
+        }
+
+        db.close();
+
+        return likes;
+    }
+
+
+
+    /*
+    public ArrayList<Contacto> obtenerTodosLosContactos() {
+        ArrayList<Contacto> contactos = new ArrayList<>();
+
+        String query = "SELECT * FROM "+ConstanteBaseDatos.TABLE_CONTACTS;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor registros = db.rawQuery(query,null);
+
+        return contactos;
+    }
+    */
+
 
 }

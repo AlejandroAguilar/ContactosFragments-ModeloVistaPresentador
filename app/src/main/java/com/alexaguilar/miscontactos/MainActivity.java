@@ -44,18 +44,11 @@ public class MainActivity extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.viewPager);
 
         //Toast.makeText(this,"Antes",Toast.LENGTH_SHORT).show();
-
         //setSupportActionBar(miActionBar);
-
-
-
-
 
         if ( toolBar != null ){
             setSupportActionBar(toolBar);
         }
-
-
 
         agregarFragments();
         setUpViewPager();
@@ -67,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
         ContactoAdaptador adaptador = new ContactoAdaptador(contactos);
         listaContactos.setAdapter(adaptador);
     }*/
-
 
     // Nuevo
     /* */
@@ -93,8 +85,5 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.getTabAt(1).setIcon(R.drawable.ic_hat);
 
     }
-
-
-
 
 }

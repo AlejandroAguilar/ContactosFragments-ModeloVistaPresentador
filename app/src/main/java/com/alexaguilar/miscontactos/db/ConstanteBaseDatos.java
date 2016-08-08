@@ -15,8 +15,8 @@ public final class ConstanteBaseDatos {
     public static final String TABLE_CONTACTS_EMAIL         = "email";
     public static final String TABLE_CONTACTS_FOTO          = "foto";
 
-    public static final String TABLE_LIKES_CONTACT = "contacto_likes" ;
-    public static final String TABLE_LIKES_CONTACT_ID = "id";
-    public static final String TABLE_LIKES_CONTACT_ID_CONTACTO = "id_contacto";
-    public static final String TABLE_LIKES_CONTACT_NUMERO_LIKES = "numero_likes";
+    public static final String TABLE_LIKES_CONTACT                  = "contacto_likes";
+    public static final String TABLE_LIKES_CONTACT_ID               = "id";
+    public static final String TABLE_LIKES_CONTACT_ID_CONTACTO      = "id_contacto";
+    public static final String TABLE_LIKES_CONTACT_NUMERO_LIKES     = "numero_likes";
 }

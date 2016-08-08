@@ -2,6 +2,7 @@ package com.alexaguilar.miscontactos.db;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 
 import com.alexaguilar.miscontactos.R;
 import com.alexaguilar.miscontactos.pojo.Contacto;
@@ -14,9 +15,11 @@ import java.util.ArrayList;
 
 // Clase interactor
 // Clase que consulta la BD
+// Va a los metodos de la BD
 
 public class ConstructorContacto {
 
+    private static final int LIKE = 1;
     private Context context;
     public ConstructorContacto(Context context) {
         this.context = context;
@@ -69,4 +72,25 @@ public class ConstructorContacto {
 
 
     }
+
+    public void darLikeContacto(Contacto contacto){
+
+        BaseDatos db = new BaseDatos(context);
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(ConstanteBaseDatos.TABLE_LIKES_CONTACT_ID_CONTACTO, contacto.getId());
+        contentValues.put(ConstanteBaseDatos.TABLE_LIKES_CONTACT_NUMERO_LIKES, LIKE);
+        db.insertarLikeContacto(contentValues);
+
+    }
+
+    public int obtenerLkesContacto(Contacto contacto){
+        BaseDatos db = new BaseDatos(context);
+        return db.obtenerLikesContacto(contacto);
+    }
+
+    public int obtenerLikesContacto(Contacto contacto){
+        BaseDatos db = new BaseDatos(context);
+        return db.obtenerLikesContacto(contacto);
+    }
+
 }
